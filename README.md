@@ -1,2 +1,18 @@
 # YouTube-Trending-Data-Pipeline-Using-AWS--S3--Glue--Athena-ETL
+Project:-> YouTube Trending Data Pipeline Using AWS (S3, Glue, Athena,ETL)
+
+Ingested YouTube Trending data from Kaggle to Amazon S3.
+Used AWS Glue Crawlers to catalog raw data and create structured tables.
+Applied partitioning in S3 to improve query efficiency.
+Analyzed data using SQL queries in Amazon Athena.
+Resolved data type mismatches (e.g., integer vs. string in joins) by schema updates and type casting in Athena; updated Parquet files to ensure schema consistency between Glue Catalog and S3 data.
+Developed and executed Glue ETL jobs (PySpark) to clean, transform, and store curated datasets back to S3.
+Followed best practices for schema management, partitioning, and IAM permissions (Principle of Least Privilege) throughout the pipeline.
+
+Tech Stack:
+AWS S3, AWS Glue (Crawlers & ETL Jobs), Athena, PySpark, Data Catalog, IAM
+
+Outcome:
+Successfully built an end-to-end data lake pipeline for large volumes of semi-structured data, implementing robust ETL, 
+schema management, and practical troubleshooting in a cloud-native environment.
 
