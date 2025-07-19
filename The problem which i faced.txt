@@ -1,0 +1,20 @@
+Problem I Faced:
+Athena Query Failed Because of Mixed Data Formats in S3 Folder
+
+So, what’s happening is:
+I was trying to run a query in Athena on my cleaned YouTube dataset, right? My Glue table is set up to expect 
+only Parquet files in that specific S3 folder. But when I ran the query, it threw a strange error saying something 
+like, “HIVE_BAD_DATA: Not valid Parquet file... expected magic number: PAR1 got: ue.”
+After looking into it, I realized Athena is trying to read everything in that S3 path as Parquet, but somehow, 
+there’s actually a CSV file in there. Parquet files start with a special header (PAR1), but since CSV files don’t have that, 
+Athena gets confused and throws this error.
+Basically, even if there’s just one CSV file in the folder, the whole query fails because it expects every file to be Parquet.
+
+How I fixed it:
+I went into my S3 bucket, found the CSV file in the folder where only Parquet files were supposed to be, 
+and either deleted it or moved it somewhere else.
+Once only the correct Parquet files were left, I ran my Athena query again—and it worked perfectly!
+
+So, the main thing is:
+If your Glue table is set up for Parquet, make sure there are no CSV (or any other format) files mixed in that folder. 
+Otherwise, Athena will not be happy!

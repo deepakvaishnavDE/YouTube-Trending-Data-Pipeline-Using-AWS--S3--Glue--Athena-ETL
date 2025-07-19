@@ -1,0 +1,12 @@
+SELECT * FROM "de-youtube-database-raw"."raw_statistics" AS a
+INNER JOIN "db_youtube_cleaned"."cleaned_statistics_reference_data" AS b
+  ON a.category_id = CAST(b.id AS INT)
+----------------------------------------------------------------------------------------------------------------------
+used cleansed layer->
+select ref.snippet_title,stats.title,stats.title
+From raw_statistics stats
+Inner Join cleansed_statistics_reference_data ref
+on(stats.category_id = ref.id)
+where ref.id =2
+-----------------------------------------------------------------------------------------------------------------------
+
